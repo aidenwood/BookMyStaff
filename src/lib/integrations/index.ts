@@ -139,3 +139,10 @@ export class IntegrationManager {
 }
 
 export const integrationManager = new IntegrationManager()
+
+// Initialize integrations with configuration
+export function initializeIntegrations(config?: any) {
+  // Configuration would be used to setup integration services
+  // For now, this is a no-op as services are initialized on demand
+  console.log('Integrations initialized with config:', config)
+}

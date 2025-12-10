@@ -9,48 +9,6 @@ type RecurringRow = Database['public']['Tables']['recurring_availability']['Row'
 type RecurringInsert = Database['public']['Tables']['recurring_availability']['Insert']
 
 export class AvailabilityService {
-  // Get available slots for booking (filters out already booked slots)
-  async getAvailableSlots(
-    businessId: string,
-    regionId: string,
-    date: string
-  ): Promise<Array<{
-    time: string
-    staffId: string
-    staffName: string
-    staffAvatar?: string
-  }>> {
-    try {
-      const { data, error } = await supabase
-        .from('staff_availability')
-        .select(`
-          staff_id,
-          time,
-          staff (
-            first_name,
-            last_name,
-            avatar
-          )
-        `)
-        .eq('business_id', businessId)
-        .eq('region', regionId)
-        .eq('date', date)
-        .eq('is_booked', false)
-        .order('time', { ascending: true })
-
-      if (error) throw error
-
-      return data.map(slot => ({
-        time: slot.time,
-        staffId: slot.staff_id,
-        staffName: `${slot.staff?.first_name || ''} ${slot.staff?.last_name || ''}`.trim(),
-        staffAvatar: slot.staff?.avatar || undefined
-      }))
-    } catch (error) {
-      console.error('Error fetching available slots:', error)
-      return []
-    }
-  }
 
   // Get staff availability for a specific date range
   async getStaffAvailability(

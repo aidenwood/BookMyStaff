@@ -9,10 +9,10 @@ export const POST: APIRoute = async ({ request }) => {
     initializeIntegrations(businessConfig?.integrations)
 
     // Sync booking to all configured integrations
-    const results = await integrationManager.syncBookingToAll(bookingData)
+    const results = await integrationManager.syncBookingToAllIntegrations(bookingData, businessConfig)
 
-    const success = results.every(r => r.success)
-    const errors = results.filter(r => !r.success).map(r => r.error)
+    const success = Object.values(results).every(r => r === true)
+    const errors = Object.entries(results).filter(([key, value]) => value === false).map(([key]) => `${key} integration failed`)
 
     return new Response(JSON.stringify({
       success,
