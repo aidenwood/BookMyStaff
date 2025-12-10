@@ -377,7 +377,7 @@ export default function NotificationSettings() {
                 type={showApiKeys ? "text" : "password"}
                 value={config.sendGridApiKey || ''}
                 onChange={(e) => updateConfig('sendGridApiKey', e.target.value)}
-                placeholder={showApiKeys ? "SG.xxxxxxxxxxxxxxxxxx" : """"""""""""""""""""""}
+                placeholder={showApiKeys ? "SG.xxxxxxxxxxxxxxxxxx" : "••••••••••••••••••••••"}
               />
               <p className="text-xs text-gray-500 mt-1">
                 Get your API key from <a href="https://sendgrid.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">SendGrid Dashboard</a>
@@ -397,7 +397,7 @@ export default function NotificationSettings() {
                   type={showApiKeys ? "text" : "password"}
                   value={config.twilioAccountSid || ''}
                   onChange={(e) => updateConfig('twilioAccountSid', e.target.value)}
-                  placeholder={showApiKeys ? "AC..." : """"""""""""""""""""""}
+                  placeholder={showApiKeys ? "AC..." : "••••••••••••••••••••••"}
                 />
               </div>
               <div>
@@ -408,7 +408,7 @@ export default function NotificationSettings() {
                   type={showApiKeys ? "text" : "password"}
                   value={config.twilioAuthToken || ''}
                   onChange={(e) => updateConfig('twilioAuthToken', e.target.value)}
-                  placeholder={showApiKeys ? "xxxxxxxxxxxx" : """"""""""""""""""""""}
+                  placeholder={showApiKeys ? "xxxxxxxxxxxx" : "••••••••••••••••••••••"}
                 />
               </div>
               <div className="md:col-span-2">
