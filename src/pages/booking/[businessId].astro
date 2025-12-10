@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BookingFlow from '../../components/Booking/BookingFlow'
+
+const { businessId } = Astro.params
+
+if (!businessId) {
+  return Astro.redirect('/404')
+}
+---
+
+<Layout title="Book Appointment">
+  <BookingFlow businessId={businessId} client:load />
+</Layout>

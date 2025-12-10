@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Layout/Header'
+import AuthContainer from '../components/Auth/AuthContainer'
+
+const { url } = Astro
+const searchParams = new URLSearchParams(url.search)
+const mode = searchParams.get('mode') || 'login'
+const redirectTo = searchParams.get('redirectTo') || '/'
+---
+
+<Layout title={mode === 'login' ? 'Sign In' : 'Sign Up'}>
+  <Header client:load />
+  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="flex min-h-screen">
+      <!-- Left Side - Branding -->
+      <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-600 to-primary-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="relative z-10 flex flex-col justify-center px-12 text-white">
+          <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-4">BookMyStaff</h1>
+            <p class="text-xl opacity-90 mb-8">
+              Streamline your business operations with intelligent staff scheduling and customer booking management.
+            </p>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Multi-Industry Support</h3>
+                <p class="text-sm opacity-80">Works for home services, healthcare, beauty, automotive, and more</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Smart Regional Coordination</h3>
+                <p class="text-sm opacity-80">Optimize staff schedules across multiple regions and postcodes</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Seamless Customer Experience</h3>
+                <p class="text-sm opacity-80">Modern booking flow with real-time availability and instant confirmations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Background Pattern -->
+        <div class="absolute bottom-0 right-0 w-96 h-96 opacity-10">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,80.9,-45.9C90,-32.8,95.2,-16.4,94.8,-0.3C94.4,15.8,88.4,31.6,79.3,45.2C70.2,58.8,58,70.1,44.1,77.4C30.2,84.7,15.1,88,-0.7,89.1C-16.5,90.2,-33,89.1,-46.8,81.8C-60.6,74.5,-71.7,61,-80.1,46.2C-88.5,31.4,-94.2,15.7,-94.6,-0.3C-95,-16.3,-90.1,-32.6,-81.7,-47.1C-73.3,-61.6,-61.4,-74.3,-47.2,-81.5C-33,-88.7,-16.5,-90.4,-0.8,-89.2C14.9,-88,29.8,-84,44.7,-76.4Z" transform="translate(100 100)" />
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Right Side - Auth Form -->
+      <div class="flex-1 flex items-center justify-center p-8">
+        <div class="w-full max-w-md">
+          <AuthContainer initialMode={mode} redirectTo={redirectTo} client:load />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Custom gradient background */
+  .bg-gradient-to-br {
+    background: linear-gradient(135deg, rgb(59, 130, 246), rgb(79, 70, 229));
+  }
+</style>

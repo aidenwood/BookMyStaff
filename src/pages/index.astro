@@ -1,0 +1,313 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Layout/Header';
+import '../styles/global.css';
+---
+
+<Layout title="BookMyStaff - Professional Booking Platform for Mobile Businesses">
+  <Header client:load />
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-800 text-white overflow-hidden">
+      <div class="absolute inset-0 bg-black opacity-10"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 text-balance">
+            Power Your Mobile Business with Smart Booking
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto text-balance">
+            Connect staff working in the same regions on the same day. Maximize efficiency, reduce travel time, and grow your mobile service business.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/setup" class="btn btn-lg bg-white text-primary-700 hover:bg-gray-50">
+              Start Free Trial
+            </a>
+            <a href="/demo" class="btn btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-700">
+              View Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Solutions -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Built for Your Industry
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Whether you're in home services, healthcare, or any mobile business, BookMyStaff adapts to your needs
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Home Services -->
+          <div class="card hover:shadow-medium transition-all duration-300">
+            <div class="card-body text-center p-8">
+              <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Home Services</h3>
+              <p class="text-gray-600">Property inspections, maintenance, repairs, installations</p>
+            </div>
+          </div>
+
+          <!-- Healthcare -->
+          <div class="card hover:shadow-medium transition-all duration-300">
+            <div class="card-body text-center p-8">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Healthcare</h3>
+              <p class="text-gray-600">Mobile healthcare, home visits, consultations</p>
+            </div>
+          </div>
+
+          <!-- Beauty & Wellness -->
+          <div class="card hover:shadow-medium transition-all duration-300">
+            <div class="card-body text-center p-8">
+              <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Beauty & Wellness</h3>
+              <p class="text-gray-600">Mobile beauty services, massage therapy, wellness</p>
+            </div>
+          </div>
+
+          <!-- Professional Services -->
+          <div class="card hover:shadow-medium transition-all duration-300">
+            <div class="card-body text-center p-8">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Professional Services</h3>
+              <p class="text-gray-600">Consultations, training, assessments, support</p>
+            </div>
+          </div>
+
+          <!-- Automotive -->
+          <div class="card hover:shadow-medium transition-all duration-300">
+            <div class="card-body text-center p-8">
+              <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Automotive</h3>
+              <p class="text-gray-600">Mobile mechanics, car wash, vehicle inspections</p>
+            </div>
+          </div>
+
+          <!-- Education & Fitness -->
+          <div class="card hover:shadow-medium transition-all duration-300">
+            <div class="card-body text-center p-8">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Education & Fitness</h3>
+              <p class="text-gray-600">Personal training, tutoring, coaching, workshops</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Everything You Need to Scale
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Smart region-based scheduling that maximizes your team's efficiency
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Smart Regional Scheduling</h3>
+            <div class="space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Region-Based Availability</h4>
+                  <p class="text-gray-600">Staff set their availability by region, customers see only available providers in their area</p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Maximize Efficiency</h4>
+                  <p class="text-gray-600">Group bookings by location and date to reduce travel time and increase revenue</p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v16a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Real-Time Sync</h4>
+                  <p class="text-gray-600">Automatically sync with your CRM and calendar systems</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative">
+            <div class="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-8">
+              <div class="bg-white rounded-xl shadow-soft p-6">
+                <h4 class="font-semibold text-gray-900 mb-4">Brisbane North - Tomorrow</h4>
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center p-3 bg-primary-50 rounded-lg">
+                    <span class="text-sm">9:00 AM - John (Inspection)</span>
+                    <span class="text-xs text-primary-600 bg-primary-100 px-2 py-1 rounded">Confirmed</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                    <span class="text-sm">11:00 AM - Sarah (Maintenance)</span>
+                    <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Available</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                    <span class="text-sm">2:00 PM - Mike (Repair)</span>
+                    <span class="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded">Available</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations -->
+    <section class="py-20 bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Integrates with Your Existing Tools
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Connect BookMyStaff with your CRM, calendar, and workflow tools
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">CRM Integration</h3>
+            <p class="text-gray-300">Pipedrive, HubSpot, Salesforce, or any CRM via API</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Zapier Webhooks</h3>
+            <p class="text-gray-300">Connect to 5000+ apps with simple webhook setup</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Email & Calendar</h3>
+            <p class="text-gray-300">Automatic email notifications and calendar sync</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-primary-600">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          Ready to Transform Your Mobile Business?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          Join hundreds of businesses already using BookMyStaff to optimize their regional operations
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/setup" class="btn btn-lg bg-white text-primary-700 hover:bg-gray-50">
+            Start Your Free Trial
+          </a>
+          <a href="/contact" class="btn btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-700">
+            Schedule Demo
+          </a>
+        </div>
+        <p class="text-sm text-primary-200 mt-4">No credit card required • 14-day free trial</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Simple Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white font-bold text-lg mb-4">BookMyStaff</h3>
+          <p class="text-sm">Smart booking platform for mobile businesses</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Product</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/features" class="hover:text-white">Features</a></li>
+            <li><a href="/pricing" class="hover:text-white">Pricing</a></li>
+            <li><a href="/integrations" class="hover:text-white">Integrations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/help" class="hover:text-white">Help Center</a></li>
+            <li><a href="/contact" class="hover:text-white">Contact Us</a></li>
+            <li><a href="/api" class="hover:text-white">API Docs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/about" class="hover:text-white">About</a></li>
+            <li><a href="/privacy" class="hover:text-white">Privacy</a></li>
+            <li><a href="/terms" class="hover:text-white">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+        <p>&copy; 2024 BookMyStaff. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>

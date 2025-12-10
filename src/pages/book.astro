@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+// Extract business ID from query params or use default
+const { businessId = 'default' } = Astro.url.searchParams
+---
+
+<Layout title="Book Appointment - BookMyStaff">
+  <div id="mobile-booking-root" class="min-h-screen bg-white"></div>
+  
+  <script type="module" define:vars={{ businessId }}>
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import MobileBookingApp from '../components/Booking/MobileBookingApp';
+    
+    const container = document.getElementById('mobile-booking-root');
+    if (container) {
+      const root = createRoot(container);
+      
+      root.render(React.createElement(MobileBookingApp, {
+        businessId: businessId
+      }));
+    }
+  </script>
+  
+  <style>
+    /* Remove default margins and make it full screen */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    /* Mobile-first responsive design */
+    @media (min-width: 768px) {
+      #mobile-booking-root {
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      }
+    }
+    
+    /* PWA-like styling */
+    @media (display-mode: standalone) {
+      body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    }
+  </style>
+</Layout>

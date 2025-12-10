@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Layout/Header'
+import ProtectedRoute from '../components/Auth/ProtectedRoute'
+---
+
+<Layout title="Staff Portal">
+  <Header client:load />
+  <ProtectedRoute client:load>
+    <div id="staff-portal-root" class="min-h-screen bg-gray-50"></div>
+  </ProtectedRoute>
+  
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import StaffPortal from '../components/Staff/StaffPortal';
+    
+    const container = document.getElementById('staff-portal-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(React.createElement(StaffPortal));
+    }
+  </script>
+</Layout>

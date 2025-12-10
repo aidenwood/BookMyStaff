@@ -1,0 +1,49 @@
+{
+  "name": "bookmystaff",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Business booking platform with staff management and customer booking interface",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^5.5.4",
+    "@astrojs/react": "^3.6.3",
+    "@astrojs/tailwind": "^5.1.5",
+    "@radix-ui/react-alert-dialog": "^1.0.4",
+    "@radix-ui/react-avatar": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/themes": "^3.2.1",
+    "@supabase/supabase-js": "^2.38.0",
+    "@types/nodemailer": "^7.0.4",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "astro": "^4.16.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^3.6.0",
+    "lucide-react": "^0.263.1",
+    "nodemailer": "^7.0.11",
+    "react": "^18.3.1",
+    "react-day-picker": "^8.9.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.3.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-astro": "^0.29.0",
+    "shadcn": "^3.5.2"
+  }
+}

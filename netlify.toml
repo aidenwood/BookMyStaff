@@ -1,0 +1,27 @@
+[build]
+  publish = "dist/"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Environment variables needed for deployment
+# SUPABASE_URL = "your-supabase-url"
+# SUPABASE_ANON_KEY = "your-supabase-anon-key"
+# PIPEDRIVE_API_KEY = "your-pipedrive-api-key" (optional)
+# ZAPIER_WEBHOOK_URL = "your-zapier-webhook-url" (optional)
+# EMAIL_SERVICE_CONFIG = "your-email-config" (optional)

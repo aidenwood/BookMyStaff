@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Layout/Header'
+import ProtectedRoute from '../../components/Auth/ProtectedRoute'
+---
+
+<Layout title="Notification Dashboard - Admin">
+  <Header client:load />
+  <ProtectedRoute client:load requiredRole="admin">
+    <div id="notification-dashboard-root" class="min-h-screen bg-gray-50"></div>
+  </ProtectedRoute>
+  
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import NotificationDashboard from '../../components/Admin/NotificationDashboard';
+    
+    const container = document.getElementById('notification-dashboard-root');
+    if (container) {
+      const root = createRoot(container);
+      
+      // Render the notification dashboard in a proper layout
+      root.render(React.createElement('div', {
+        className: 'px-4 sm:px-6 lg:px-8 py-8'
+      }, React.createElement(NotificationDashboard)));
+    }
+  </script>
+</Layout>

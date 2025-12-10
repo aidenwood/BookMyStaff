@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Layout/Header'
+import ProtectedRoute from '../../components/Auth/ProtectedRoute'
+---
+
+<Layout title="Service Areas - Admin">
+  <Header client:load />
+  <ProtectedRoute client:load requiredRole="admin">
+    <div id="service-areas-root" class="min-h-screen bg-gray-50"></div>
+  </ProtectedRoute>
+  
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import ServiceAreaManager from '../../components/Admin/ServiceAreaManager';
+    
+    const container = document.getElementById('service-areas-root');
+    if (container) {
+      const root = createRoot(container);
+      
+      // Render the service area manager in a proper layout
+      root.render(React.createElement('div', {
+        className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'
+      }, React.createElement(ServiceAreaManager)));
+    }
+  </script>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Layout/Header'
+---
+
+<Layout title="Manage Booking - BookMyStaff">
+  <Header client:load />
+  
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="booking-management-root"></div>
+    </div>
+  </div>
+  
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import BookingManagement from '../components/Booking/BookingManagement';
+    
+    const container = document.getElementById('booking-management-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(React.createElement(BookingManagement));
+    }
+  </script>
+</Layout>

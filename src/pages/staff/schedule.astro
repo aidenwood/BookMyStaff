@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Layout/Header'
+import ProtectedRoute from '../../components/Auth/ProtectedRoute'
+---
+
+<Layout title="Manage Shifts">
+  <Header client:load />
+  <ProtectedRoute requiredRole="business_owner" client:load>
+    <div class="min-h-screen bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">
+            Manage Staff Shifts
+          </h1>
+          <p class="text-xl text-gray-600">
+            Schedule and coordinate your team's availability across regions
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-8 text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Staff Schedule Management</h2>
+          <p class="text-gray-600 mb-6">
+            This feature will allow you to view and modify staff schedules, assign shifts, and optimize regional coverage.
+          </p>
+          <div class="space-y-2 text-sm text-gray-500">
+            <p>• View weekly/monthly staff schedules</p>
+            <p>• Assign shifts based on regional availability</p>
+            <p>• Handle shift swaps and time-off requests</p>
+            <p>• Optimize coverage for high-demand areas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ProtectedRoute>
+</Layout>

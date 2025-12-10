@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="My Availability - BookMyStaff">
+  <div id="availability-root" class="min-h-screen bg-gray-50"></div>
+  
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import ProtectedRoute from '../../components/Auth/ProtectedRoute';
+    import AvailabilityPage from '../../components/Staff/AvailabilityPage';
+    
+    const root = createRoot(document.getElementById('availability-root'));
+    root.render(
+      React.createElement(ProtectedRoute, { requiredRole: 'staff' },
+        React.createElement(AvailabilityPage)
+      )
+    );
+  </script>
+</Layout>

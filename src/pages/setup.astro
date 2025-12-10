@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Setup Your Business - BookMyStaff">
+  <div id="setup-root" class="min-h-screen bg-gray-50"></div>
+  
+  <script type="module">
+    import { createRoot } from 'react-dom/client';
+    import BusinessSetup from '../components/Setup/BusinessSetup';
+    
+    const root = createRoot(document.getElementById('setup-root'));
+    root.render(React.createElement(BusinessSetup));
+  </script>
+</Layout>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
