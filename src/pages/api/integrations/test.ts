@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro'
-import { PipedriveIntegration } from '../../../lib/integrations/pipedrive'
-import { ZapierIntegration } from '../../../lib/integrations/zapier'
-import { EmailIntegration } from '../../../lib/integrations/email'
+import { PipedriveService } from '../../../lib/integrations/pipedrive'
+import { ZapierService } from '../../../lib/integrations/zapier'
+import { EmailService } from '../../../lib/integrations/email'
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -11,8 +11,8 @@ export const POST: APIRoute = async ({ request }) => {
     switch (type) {
       case 'pipedrive':
         if (config.apiKey && config.domain) {
-          const pipedrive = new PipedriveIntegration(config.apiKey, config.domain)
-          result.connected = await pipedrive.testConnection()
+          const pipedrive = new PipedriveService()
+          result.connected = await pipedrive.testConnection(config)
         } else {
           result.error = 'Missing API key or domain'
         }
@@ -20,16 +20,16 @@ export const POST: APIRoute = async ({ request }) => {
 
       case 'zapier':
         if (config.webhookUrl) {
-          const zapier = new ZapierIntegration(config.webhookUrl)
-          result.connected = await zapier.testConnection()
+          const zapier = new ZapierService()
+          result.connected = await zapier.testWebhook(config)
         } else {
           result.error = 'Missing webhook URL'
         }
         break
 
       case 'email':
-        const email = new EmailIntegration()
-        result.connected = await email.testConnection()
+        const email = new EmailService()
+        result.connected = await email.testConnection(config, {})
         break
 
       default:
