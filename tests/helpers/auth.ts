@@ -8,9 +8,7 @@ export class AuthHelper {
   }
 
   async selectUserType(userType: 'business' | 'staff') {
-    // Select user type before login
-    await this.page.locator(`[data-testid="${userType}-type-button"]`).click();
-    // Alternative selector if data-testid doesn't exist
+    // Select user type button based on the text content
     await this.page.locator('button', { hasText: userType === 'business' ? 'Business Owner' : 'Staff Member' }).click();
   }
 
@@ -70,8 +68,8 @@ export class AuthHelper {
   }) {
     await this.goToLogin();
     
-    // Click "Sign up" link to switch to signup mode
-    await this.page.locator('button', { hasText: 'Sign up' }).click();
+    // Click "Sign up" link to switch to signup mode (use more specific selector)
+    await this.page.locator('button.text-primary-600', { hasText: 'Sign up' }).click();
     
     await this.selectUserType(data.userType);
     await this.fillSignupForm(data);

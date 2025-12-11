@@ -1,3 +1,5 @@
+import { RegionConfig } from './regions'
+
 export interface Business {
   id: string
   name: string

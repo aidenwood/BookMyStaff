@@ -24,11 +24,10 @@ test.describe('Business Owner Authentication', () => {
   test('should require user type selection before login', async ({ page }) => {
     await authHelper.goToLogin();
     
-    // Try to submit without selecting user type
+    // Fill the form without selecting user type
     await authHelper.fillLoginForm('test@example.com', 'password');
-    await authHelper.submitLoginForm();
     
-    // Login button should be disabled or show error
+    // Login button should be disabled when no user type is selected
     const submitButton = page.locator('button[type="submit"]');
     await expect(submitButton).toBeDisabled();
   });
@@ -75,36 +74,36 @@ test.describe('Business Owner Authentication', () => {
     await authHelper.goToLogin();
     
     // Should start in login mode
-    await expect(page.locator('button', { hasText: 'Sign up' })).toBeVisible();
+    await expect(page.locator('button.text-primary-600', { hasText: 'Sign up' })).toBeVisible();
     
     // Switch to signup mode
-    await page.locator('button', { hasText: 'Sign up' }).click();
+    await page.locator('button.text-primary-600', { hasText: 'Sign up' }).click();
     
     // Should now show signup form with additional fields
-    await expect(page.locator('button', { hasText: 'Sign in' })).toBeVisible();
+    await expect(page.locator('button.text-primary-600', { hasText: 'Sign in' })).toBeVisible();
     
     // Switch back to login mode
-    await page.locator('button', { hasText: 'Sign in' }).click();
+    await page.locator('button.text-primary-600', { hasText: 'Sign in' }).click();
     
     // Should be back to login mode
-    await expect(page.locator('button', { hasText: 'Sign up' })).toBeVisible();
+    await expect(page.locator('button.text-primary-600', { hasText: 'Sign up' })).toBeVisible();
   });
 
   test('should handle OAuth login flows', async ({ page }) => {
     await authHelper.goToLogin();
-    await authHelper.selectUserType('business');
     
-    // Should see OAuth buttons
+    // OAuth buttons should be disabled initially (no user type selected)
+    const googleButton = page.locator('button', { hasText: /Continue with Google/i });
+    await expect(googleButton).toBeDisabled();
+    
+    // After selecting user type, OAuth buttons should be enabled
+    await authHelper.selectUserType('business');
+    await expect(googleButton).not.toBeDisabled();
+    
+    // Should see all OAuth buttons
     await expect(page.locator('button', { hasText: /Continue with Google/i })).toBeVisible();
     await expect(page.locator('button', { hasText: /Continue with Facebook/i })).toBeVisible();
     await expect(page.locator('button', { hasText: /Continue with Microsoft/i })).toBeVisible();
-    
-    // OAuth buttons should be disabled until user type is selected
-    const googleButton = page.locator('button', { hasText: /Continue with Google/i });
-    await expect(googleButton).not.toBeDisabled();
-    
-    // Click Google OAuth (will redirect to Google, but we can test the initial flow)
-    // Note: In a real test environment, you'd mock the OAuth response
   });
 
   test('should show forgot password functionality', async ({ page }) => {
@@ -135,12 +134,13 @@ test.describe('Business Owner Authentication', () => {
     await authHelper.selectUserType('business');
     
     // User type should remain selected when switching forms
-    await page.locator('button', { hasText: 'Sign up' }).click();
+    await page.locator('button.text-primary-600', { hasText: 'Sign up' }).click();
     
-    // Business type should still be selected in signup mode
-    await expect(page.locator('button[data-testid="business-type-button"]').or(
-      page.locator('button', { hasText: 'Business Owner' })
-    )).toHaveClass(/selected|active/);
+    // Business type should still be selected in signup mode - check for variant="default" styling
+    const businessButton = page.locator('button', { hasText: 'Business Owner' });
+    await expect(businessButton).toBeVisible();
+    // Check if the button has the selected styling (variant="default" adds darker background)
+    await expect(businessButton).toHaveClass(/bg-primary|bg-black|bg-gray-900/);
   });
 
   test('should handle network errors gracefully', async ({ page }) => {
@@ -161,7 +161,7 @@ test.describe('Business Owner Authentication', () => {
     await authHelper.goToLogin();
     
     // Switch to signup mode
-    await page.locator('button', { hasText: 'Sign up' }).click();
+    await page.locator('button.text-primary-600', { hasText: 'Sign up' }).click();
     await authHelper.selectUserType('business');
     
     // Test weak password

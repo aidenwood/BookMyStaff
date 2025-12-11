@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="BookMyStaff - Professional business booking platform"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>Sign In - BookMyStaff</title><link rel="stylesheet" href="/_astro/notification-dashboard.B5gEeYc5.css">
+<link rel="stylesheet" href="/_astro/login.-N5WCx9p.css"></head> <body data-astro-cid-sckkx6r4>  <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8"> <div class="sm:mx-auto sm:w-full sm:max-w-md"> <div class="text-center"> <h1 class="text-3xl font-bold text-primary-600 mb-2">BookMyStaff</h1> <p class="text-gray-600">Professional booking platform</p> </div> </div> <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md"> <div id="login-root"></div> </div> </div> <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import LoginForm from '../../components/Auth/LoginForm';
+    import RegisterForm from '../../components/Auth/RegisterForm';
+
+    function AuthPage() {
+      const [isLogin, setIsLogin] = React.useState(true);
+      const urlParams = new URLSearchParams(window.location.search);
+      const mode = urlParams.get('mode');
+      const redirectTo = urlParams.get('redirectTo');
+      const error = urlParams.get('error');
+
+      React.useEffect(() => {
+        if (mode === 'register') {
+          setIsLogin(false);
+        }
+      }, [mode]);
+
+      React.useEffect(() => {
+        if (error) {
+          // Show error message
+          console.error('Auth error:', error);
+        }
+      }, [error]);
+
+      return React.createElement(
+        'div',
+        null,
+        isLogin
+          ? React.createElement(LoginForm, {
+              onSwitchToRegister: () => setIsLogin(false),
+              redirectTo
+            })
+          : React.createElement(RegisterForm, {
+              onSwitchToLogin: () => setIsLogin(true)
+            })
+      );
+    }
+
+    const root = createRoot(document.getElementById('login-root'));
+    root.render(React.createElement(AuthPage));
+  </script>   </body> </html>
