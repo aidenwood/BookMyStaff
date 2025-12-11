@@ -4,18 +4,125 @@
 @tailwind components;
 @tailwind utilities;
 
+/* OKLCH Color Theme */
+:root {
+  --radius: 0.65rem;
+  
+  /* Light theme - converted from OKLCH to HSL for better compatibility */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 14.5%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 14.5%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 14.5%;
+  --primary: 0 0% 20.5%;
+  --primary-foreground: 0 0% 98.5%;
+  --secondary: 0 0% 97%;
+  --secondary-foreground: 0 0% 20.5%;
+  --muted: 0 0% 97%;
+  --muted-foreground: 0 0% 55.6%;
+  --accent: 0 0% 97%;
+  --accent-foreground: 0 0% 20.5%;
+  --destructive: 27 58% 57.7%;
+  --destructive-foreground: 0 0% 98.5%;
+  --border: 0 0% 92.2%;
+  --input: 0 0% 92.2%;
+  --ring: 0 0% 70.8%;
+  
+  /* Chart colors */
+  --chart-1: 41 64% 65%;
+  --chart-2: 185 60% 60%;
+  --chart-3: 227 40% 40%;
+  --chart-4: 84 83% 83%;
+  --chart-5: 70 77% 77%;
+  
+  /* Sidebar colors */
+  --sidebar: 0 0% 98.5%;
+  --sidebar-foreground: 0 0% 14.5%;
+  --sidebar-primary: 0 0% 20.5%;
+  --sidebar-primary-foreground: 0 0% 98.5%;
+  --sidebar-accent: 0 0% 97%;
+  --sidebar-accent-foreground: 0 0% 20.5%;
+  --sidebar-border: 0 0% 92.2%;
+  --sidebar-ring: 0 0% 70.8%;
+}
+
+.dark {
+  /* Dark theme - converted from OKLCH to HSL for better compatibility */
+  --background: 0 0% 14.5%;
+  --foreground: 0 0% 98.5%;
+  --card: 0 0% 20.5%;
+  --card-foreground: 0 0% 98.5%;
+  --popover: 0 0% 20.5%;
+  --popover-foreground: 0 0% 98.5%;
+  --primary: 0 0% 92.2%;
+  --primary-foreground: 0 0% 20.5%;
+  --secondary: 0 0% 26.9%;
+  --secondary-foreground: 0 0% 98.5%;
+  --muted: 0 0% 26.9%;
+  --muted-foreground: 0 0% 70.8%;
+  --accent: 0 0% 26.9%;
+  --accent-foreground: 0 0% 98.5%;
+  --destructive: 22 70% 70.4%;
+  --destructive-foreground: 0 0% 98.5%;
+  --border: 0 0% 100% / 0.1;
+  --input: 0 0% 100% / 0.15;
+  --ring: 0 0% 55.6%;
+  
+  /* Chart colors for dark theme */
+  --chart-1: 264 49% 49%;
+  --chart-2: 162 70% 70%;
+  --chart-3: 70 77% 77%;
+  --chart-4: 304 63% 63%;
+  --chart-5: 16 65% 65%;
+  
+  /* Sidebar colors for dark theme */
+  --sidebar: 0 0% 20.5%;
+  --sidebar-foreground: 0 0% 98.5%;
+  --sidebar-primary: 264 49% 49%;
+  --sidebar-primary-foreground: 0 0% 98.5%;
+  --sidebar-accent: 0 0% 26.9%;
+  --sidebar-accent-foreground: 0 0% 98.5%;
+  --sidebar-border: 0 0% 100% / 0.1;
+  --sidebar-ring: 0 0% 55.6%;
+}
+
 @layer base {
   * {
-    @apply border-gray-200;
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
   }
   
   html {
     @apply scroll-smooth;
+    font-size: 16px;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 font-sans;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: Inter, system-ui, sans-serif;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    min-height: 100vh;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Better responsive containers */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -26,15 +133,48 @@
   }
   
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+    @apply btn;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  
+  .btn-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+  
+  .btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
   }
   
   .btn-secondary {
-    @apply btn bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-500;
+    @apply btn;
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+  
+  .btn-secondary:hover {
+    background-color: hsl(var(--secondary) / 0.8);
+  }
+  
+  .btn-secondary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
   }
   
   .btn-accent {
-    @apply btn bg-accent-600 text-white hover:bg-accent-700 focus:ring-accent-500;
+    @apply btn;
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+  
+  .btn-accent:hover {
+    background-color: hsl(var(--accent) / 0.8);
+  }
+  
+  .btn-accent:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
   }
   
   .btn-sm {
@@ -55,11 +195,21 @@
 
   /* Form Components */
   .form-input {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors;
+    @apply w-full px-4 py-3 rounded-lg transition-colors;
+    border: 1px solid hsl(var(--input));
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  
+  .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
+    border-color: hsl(var(--ring));
   }
   
   .form-label {
-    @apply block text-sm font-medium text-gray-700 mb-2;
+    @apply block text-sm font-medium mb-2;
+    color: hsl(var(--foreground));
   }
   
   .form-group {
@@ -68,11 +218,15 @@
 
   /* Card Components */
   .card {
-    @apply bg-white rounded-xl border border-gray-200 shadow-soft;
+    @apply rounded-xl shadow-soft;
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
   }
   
   .card-header {
-    @apply px-6 py-4 border-b border-gray-200;
+    @apply px-6 py-4;
+    border-bottom: 1px solid hsl(var(--border));
   }
   
   .card-body {
@@ -80,20 +234,25 @@
   }
   
   .card-footer {
-    @apply px-6 py-4 border-t border-gray-200;
+    @apply px-6 py-4;
+    border-top: 1px solid hsl(var(--border));
   }
 
   /* Modal Components */
   .modal-overlay {
-    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4;
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4;
   }
   
   .modal-content {
-    @apply bg-white rounded-2xl shadow-hard max-w-lg w-full max-h-[90vh] overflow-y-auto;
+    @apply rounded-2xl shadow-hard max-w-lg w-full max-h-[90vh] overflow-y-auto;
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
   }
   
   .modal-header {
-    @apply px-6 py-4 border-b border-gray-200 flex items-center justify-between;
+    @apply px-6 py-4 flex items-center justify-between;
+    border-bottom: 1px solid hsl(var(--border));
   }
   
   .modal-body {
@@ -101,7 +260,8 @@
   }
   
   .modal-footer {
-    @apply px-6 py-4 border-t border-gray-200 flex justify-end gap-3;
+    @apply px-6 py-4 flex justify-end gap-3;
+    border-top: 1px solid hsl(var(--border));
   }
 
   /* Staff Card */
@@ -110,7 +270,8 @@
   }
   
   .staff-card.selected {
-    @apply ring-2 ring-primary-500 shadow-medium;
+    @apply shadow-medium;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
   }
 
   /* Time Slot */
@@ -119,11 +280,18 @@
   }
   
   .time-slot.selected {
-    @apply bg-primary-600 text-white hover:bg-primary-700;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  
+  .time-slot.selected:hover {
+    background-color: hsl(var(--primary) / 0.9);
   }
   
   .time-slot.disabled {
-    @apply opacity-50 cursor-not-allowed bg-gray-100 text-gray-400;
+    @apply opacity-50 cursor-not-allowed;
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
   }
 
   /* Calendar Styles */
@@ -132,25 +300,36 @@
   }
   
   .calendar-wrapper {
-    @apply bg-white rounded-2xl shadow-soft p-6;
+    @apply rounded-2xl shadow-soft p-6;
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
   }
 
   /* Loading States */
   .loading-spinner {
-    @apply w-6 h-6 border-2 border-gray-300 border-t-primary-600 rounded-full animate-spin;
+    @apply w-6 h-6 rounded-full animate-spin;
+    border: 2px solid hsl(var(--border));
+    border-top-color: hsl(var(--primary));
   }
   
   .loading-skeleton {
-    @apply bg-gray-200 animate-pulse rounded;
+    @apply animate-pulse rounded;
+    background-color: hsl(var(--muted));
   }
 
   /* Navigation */
   .nav-link {
-    @apply text-gray-600 hover:text-primary-600 font-medium transition-colors duration-200;
+    @apply font-medium transition-colors duration-200;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .nav-link:hover {
+    color: hsl(var(--primary));
   }
   
   .nav-link.active {
-    @apply text-primary-600;
+    color: hsl(var(--primary));
   }
 
   /* Status Badges */
@@ -182,6 +361,42 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Responsive utilities */
+  .container-fluid {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container-fluid {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-fluid {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  
+  /* Better mobile touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Responsive text sizes */
+  .text-responsive-xs { @apply text-xs sm:text-sm; }
+  .text-responsive-sm { @apply text-sm sm:text-base; }
+  .text-responsive-base { @apply text-base sm:text-lg; }
+  .text-responsive-lg { @apply text-lg sm:text-xl; }
+  .text-responsive-xl { @apply text-xl sm:text-2xl; }
+  .text-responsive-2xl { @apply text-2xl sm:text-3xl; }
+  .text-responsive-3xl { @apply text-3xl sm:text-4xl md:text-5xl; }
 }
 
 /* Mobiscroll Calendar Overrides */
@@ -194,9 +409,11 @@
 }
 
 .mbsc-material .mbsc-calendar-day.mbsc-selected {
-  @apply bg-primary-600;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
 }
 
 .mbsc-material .mbsc-calendar-day:hover {
-  @apply bg-primary-100;
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }

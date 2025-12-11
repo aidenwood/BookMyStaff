@@ -25,7 +25,7 @@ export default function SignupForm({ onToggleMode, redirectTo = '/' }: SignupFor
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const { signup, loginWithOAuth } = useAuthStore()
+  const { register, loginWithOAuth } = useAuthStore()
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -53,20 +53,18 @@ export default function SignupForm({ onToggleMode, redirectTo = '/' }: SignupFor
     setError(null)
 
     try {
-      const { error } = await signup({
+      const success = await register({
+        name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
         password: formData.password,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
         businessName: formData.businessName,
-        phone: formData.phone,
-        role: formData.role
+        phone: formData.phone
       })
 
-      if (error) {
-        setError(error.message)
-      } else {
+      if (success) {
         window.location.href = redirectTo
+      } else {
+        setError('Registration failed. Please try again.')
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.')

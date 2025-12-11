@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import { User, Settings, Plus, Clock, LogOut, Menu, X } from 'lucide-react'
+import { User, Settings, Plus, Clock, LogOut, Menu, X, ChevronDown, Building2 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useAuthStore } from '../../lib/authStore'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [businessDropdownOpen, setBusinessDropdownOpen] = useState(false)
+  const [personDropdownOpen, setPersonDropdownOpen] = useState(false)
   const { user, logout, checkAuth, isLoading } = useAuthStore()
+
+  // Check if current page is admin
+  const isAdminPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')
 
   useEffect(() => {
     checkAuth()
   }, [])
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setBusinessDropdownOpen(false)
+      setPersonDropdownOpen(false)
+    }
+    
+    if (businessDropdownOpen || personDropdownOpen) {
+      document.addEventListener('click', handleClickOutside)
+      return () => document.removeEventListener('click', handleClickOutside)
+    }
+  }, [businessDropdownOpen, personDropdownOpen])
 
   const handleLogout = async () => {
     await logout()
@@ -17,7 +35,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white shadow-sm relative z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -32,15 +50,77 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/features" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Features
-            </a>
-            <a href="/pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Pricing
-            </a>
-            <a href="/demo" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Demo
-            </a>
+            {!isAdminPage ? (
+              <>
+                <a href="/features" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Features
+                </a>
+                <a href="/pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Pricing
+                </a>
+                <a href="/demo" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Demo
+                </a>
+              </>
+            ) : (
+              <>
+                {/* Business Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setBusinessDropdownOpen(!businessDropdownOpen)}
+                    className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Building2 className="w-4 h-4" />
+                    <span>Current Business</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                  {businessDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-gray-200 z-50">
+                      <div className="p-2">
+                        <div className="px-3 py-2 text-sm font-medium text-gray-900 border-b border-gray-100">
+                          Brisbane Cleaning Co
+                        </div>
+                        <button className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded">
+                          Switch Business
+                        </button>
+                        <button className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded">
+                          Business Settings
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Person Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setPersonDropdownOpen(!personDropdownOpen)}
+                    className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <User className="w-4 h-4" />
+                    <span>John Smith</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                  {personDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
+                      <div className="p-2">
+                        <button className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded">
+                          Profile Settings
+                        </button>
+                        <button className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded">
+                          Account Preferences
+                        </button>
+                        <div className="border-t border-gray-100 mt-1 pt-1">
+                          <button className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded">
+                            Sign Out
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
 
             {/* Authentication UI */}
             {isLoading ? (

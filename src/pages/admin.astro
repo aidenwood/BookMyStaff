@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Layout/Header';
+import AdminDashboard from '../components/Admin/AdminDashboard';
+import '../styles/global.css';
+---
+
+<Layout title="Admin Dashboard - BookMyStaff">
+  <Header client:load />
+  <AdminDashboard client:load />
+</Layout>

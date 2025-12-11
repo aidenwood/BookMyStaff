@@ -1,0 +1,95 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - heading "BookMyStaff" [level=1] [ref=e7]
+      - paragraph [ref=e8]: Streamline your business operations with intelligent staff scheduling and customer booking management.
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Get Started" [level=1] [ref=e15]
+        - paragraph [ref=e16]: Create your BookMyStaff account
+      - generic [ref=e17]:
+        - button "Continue with Google" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+          - text: Continue with Google
+        - button "Continue with GitHub" [ref=e24] [cursor=pointer]:
+          - img [ref=e25]
+          - text: Continue with GitHub
+        - button "Continue with Microsoft" [ref=e27] [cursor=pointer]:
+          - img [ref=e28]
+          - text: Continue with Microsoft
+      - generic [ref=e37]: Or sign up with email
+      - alert [ref=e38]:
+        - generic [ref=e39]: Registration failed. Please try again.
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]: "I want to:"
+          - generic [ref=e43]:
+            - button "Setup a business" [ref=e44] [cursor=pointer]:
+              - img [ref=e45]
+              - text: Setup a business
+            - button "Join as staff" [ref=e49] [cursor=pointer]:
+              - img [ref=e50]
+              - text: Join as staff
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: First Name
+            - textbox "John" [ref=e56]: Aiden
+          - generic [ref=e57]:
+            - generic [ref=e58]: Last Name
+            - textbox "Smith" [ref=e59]: Wood
+        - generic [ref=e60]:
+          - generic [ref=e61]: Email Address
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - textbox "john@example.com" [ref=e66]: hi@aidxn.com
+        - generic [ref=e67]:
+          - generic [ref=e68]: Business Name
+          - generic [ref=e69]:
+            - img [ref=e70]
+            - textbox "Your business name" [ref=e74]: Aidxn Design
+        - generic [ref=e75]:
+          - generic [ref=e76]: Password
+          - generic [ref=e77]:
+            - img [ref=e78]
+            - textbox "Create a password" [ref=e81]: aiden123wood
+            - button [ref=e82] [cursor=pointer]:
+              - img [ref=e83]
+        - generic [ref=e86]:
+          - generic [ref=e87]: Confirm Password
+          - generic [ref=e88]:
+            - img [ref=e89]
+            - textbox "Confirm your password" [ref=e92]: aiden123wood
+            - button [ref=e93] [cursor=pointer]:
+              - img [ref=e94]
+        - generic [ref=e97]:
+          - checkbox [checked] [ref=e98]
+          - generic [ref=e99]:
+            - text: I agree to the
+            - link "Terms of Service" [ref=e100] [cursor=pointer]:
+              - /url: "#"
+            - text: and
+            - link "Privacy Policy" [ref=e101] [cursor=pointer]:
+              - /url: "#"
+        - button "Create Account" [ref=e102] [cursor=pointer]
+      - paragraph [ref=e104]:
+        - text: Already have an account?
+        - button "Sign in" [ref=e105] [cursor=pointer]
+  - generic [ref=e108]:
+    - button "Menu" [ref=e109]:
+      - img [ref=e111]
+      - generic: Menu
+    - button "Inspect" [ref=e115]:
+      - img [ref=e117]
+      - generic: Inspect
+    - button "Audit" [ref=e119]:
+      - generic [ref=e120]:
+        - img [ref=e121]
+        - img [ref=e124]
+      - generic: Audit
+    - button "Settings" [ref=e127]:
+      - img [ref=e129]
+      - generic: Settings
+```

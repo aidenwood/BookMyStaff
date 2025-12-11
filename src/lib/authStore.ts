@@ -229,7 +229,7 @@ export const useAuthStore = create<AuthStore>()(
               *,
               businesses (*)
             `)
-            .eq('id', userId)
+            .eq('user_id', userId)
             .single()
 
           if (error || !data) {
@@ -246,7 +246,7 @@ export const useAuthStore = create<AuthStore>()(
           }
 
           return {
-            id: data.id,
+            id: data.user_id,
             email: data.email,
             name: data.name,
             role: data.role as any,
@@ -264,15 +264,24 @@ export const useAuthStore = create<AuthStore>()(
 
       createUserProfile: async (userId: string, userData: RegisterData) => {
         try {
-          // Create business first
+          // Create user profile first
+          const { error: userError } = await supabase
+            .from('users')
+            .insert({
+              id: userId,
+              email: userData.email
+            })
+
+          if (userError) throw userError
+
+          // Create business
           const { data: business, error: businessError } = await supabase
             .from('businesses')
             .insert({
               name: userData.businessName,
               email: userData.email,
               phone: userData.phone,
-              owner_id: userId,
-              industry_id: 'other'
+              owner_id: userId
             })
             .select()
             .single()
@@ -283,7 +292,7 @@ export const useAuthStore = create<AuthStore>()(
           const { error: profileError } = await supabase
             .from('staff_members')
             .insert({
-              id: userId,
+              user_id: userId,
               business_id: business.id,
               name: userData.name,
               email: userData.email,

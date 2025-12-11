@@ -2,40 +2,73 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1400px',
+      },
+    },
     extend: {
       colors: {
-        // Bold & Minimal Color Palette
+        // OKLCH Theme Colors using CSS custom properties
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
+        },
+        
+        // Legacy colors for backwards compatibility
         cream: '#fffcf2',
         lightgray: '#ccc5b9',
         darkgray: '#403d39',
         charcoal: '#252422',
         orange: '#eb5e28',
-        
-        // Semantic colors
-        primary: {
-          50: '#fef7f0',
-          100: '#fdede1',
-          200: '#fad8c3',
-          300: '#f6c2a4',
-          400: '#f3ad86',
-          500: '#eb5e28',
-          600: '#d34d1f',
-          700: '#bb3d16',
-          800: '#a22c0d',
-          900: '#8a1c04',
-        },
-        gray: {
-          50: '#fffcf2',
-          100: '#f5f2e8',
-          200: '#ccc5b9',
-          300: '#a8a095',
-          400: '#847b71',
-          500: '#403d39',
-          600: '#36332f',
-          700: '#2c2925',
-          800: '#252422',
-          900: '#1a1918',
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -47,6 +80,9 @@ export default {
         '128': '32rem',
       },
       borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
         'xl': '1rem',
         '2xl': '1.5rem',
         '3xl': '2rem',
